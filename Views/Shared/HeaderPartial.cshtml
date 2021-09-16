@@ -1,0 +1,85 @@
+﻿<header>
+    <div class="justify-content-sm-center">
+        <div class='line' expand='lg'></div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <span>
+                        <img src="~/images/public/logo.png" class="logo" />
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <img src="~/images/public/gamburger.png" class="gamburger" />
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <div class="adressok">
+                        <img src="~/images/public/Phone.png" class="phone" />
+                        <i>тел. +7(913)700-91-50</i><a> магазин автозапчастей </a><a style="color: red"> АВТОГРАДЪ</a><a> г. Новосибирск ул.Доватора,11 2 этаж</a>
+                    </div>
+
+                    <ul class="navbar-nav ml-auto">
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="GetOrders" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    Панель администратора
+                                </a>
+                            </li>
+                        }
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form method="get" class="form-inline my-2 my-lg-0">
+                                    <button class="btn" type="submit" asp-controller="Account" asp-action="Login">
+                                        <img src="~/images/public/user-logo.png" class="user-logo" />
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/images/public/user-logo.png" class="user-logo" />
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item">
+                                        <form method="get" asp-controller="UserProfile" asp-action="Index">
+                                            <input type="submit" value="Личный кабинет"
+                                                   style="background:none;border:none;padding:0">
+                                        </form>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item">
+                                        <form method="post" asp-controller="Account" asp-action="Logout">
+                                            <input type="submit" value="Выход" style="background:none;border:none;padding:0">
+                                        </form>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <form method="get" class="form-inline my-2 my-lg-0">
+                                <button class="btn" type="submit" asp-controller="Cart" asp-action="Index">
+                                    <img src="~/images/public/Cart.png" class="cart" />
+                                    <span class="visually-hidden">
+                                        <strong class="cart-quantity">
+                                            @await Component.InvokeAsync("Cart",
+    User.Identity.Name)
+                                        </strong>
+                                    </span>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class='line' expand='lg'></div>
+    </div>
+</header>

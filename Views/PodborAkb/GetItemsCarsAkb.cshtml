@@ -1,0 +1,36 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Podbor_akb>
+
+
+<select id="car" name="Car" class="form-control">
+    <option value="">--Выберите модель--</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Car">@item.Car</option>
+    }
+</select>
+
+
+<script src="~/js/site.js"></script>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script type="text/javascript">
+
+        $(function () {
+            $('#car').change(function ()
+                    {
+                        // получаем выбранный id
+                        var id = $(this).val();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetItemsModificationsAkb")/' + id,
+                            success: function (data) {
+                                // заменяем содержимое присланным частичным представлением
+                                $('#modification').replaceWith(data);
+                            }
+                        });
+                    });
+                })
+</script>
+
+

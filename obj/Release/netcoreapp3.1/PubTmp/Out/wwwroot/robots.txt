@@ -1,0 +1,59 @@
+?User-agent: Yandex
+Sitemap: https://akbkoleso.ru/sitemap.xml
+Allow: /*.js
+Allow: /*.css
+Disallow: /Cart
+Disallow: /Admin
+Disallow: /Roles
+Disallow: /Roles/Create
+Disallow: /Roles/UserList
+Disallow: /Roles/Edit?
+Host: https://akbkoleso.ru/
+
+
+user-agent:*
+Allow: /*.js
+Allow: /*.css
+Disallow: /Cart
+Disallow: /Admin
+Disallow: /Roles
+Disallow: /Roles/Create
+Disallow: /Roles/UserList
+Disallow: /Roles/Edit?
+Host: https://akbkoleso.ru/
+Sitemap: https://akbkoleso.ru/sitemap.xml
+
+User-Agent: DISCo Pump
+Disallow: /
+
+User-Agent: Wget
+Disallow: /
+
+User-Agent: WebZIP
+Disallow: /
+
+User-Agent: Teleport Pro
+Disallow: /
+
+User-Agent: WebSnake
+Disallow: /
+
+User-Agent: Offline Explorer
+Disallow: /
+
+User-Agent: Web-By-Mail
+Disallow: /
+
+User-agent: psbot
+Disallow: /
+
+User-agent: gigabot
+Disallow: /
+
+User-agent: Twiceler
+Disallow: /
+
+User-agent: NetinfoBot
+Disallow: /
+
+

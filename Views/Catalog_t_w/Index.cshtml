@@ -1,0 +1,75 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels>
+
+    <div class="row justify-content-around">
+        <h4 class="p-2 bg-secondary text-white text-center col-md-10">Каталог по подбору шин и дисков</h4>
+        <div></div>
+        <div class="text-center">
+            @Html.Partial("Pages", Model)
+
+
+            @{
+                ViewBag.searches = new string[] { "Vendor", "Car" };
+                ViewBag.sorts = new string[] { "Id", "Year", "Modification" };
+            }
+            @Html.Partial("PageOptions", Model)
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th>Год_выпуска</th>
+                        <th>Модификация</th>
+                        <th>Сверловка</th>
+                        <th>ЦО</th>
+                        <th>Гайка</th>
+                        <th>Завод пареметр шин</th>
+                        <th>Замена шин</th>
+                        <th>Тюнинг шины</th>
+                        <th>Заводской параметр дисков</th>
+                        <th>Замена дисков</th>
+                        <th>Тюнинг дисков</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var g in Model)
+                    {
+                        <tr>
+                            <td>@g.Id</td>
+                            <td>@g.Vendor</td>
+                            <td>@g.Car</td>
+                            <td>@g.Year</td>
+                            <td>@g.Modification</td>
+                            <td>@g.Pcd</td>
+                            <td>@g.Diametr</td>
+                            <td>@g.Gaika</td>
+                            <td>@g.Zavod_shini</td>
+                            <td>@g.Zamen_shini</td>
+                            <td>@g.Tuning_shini</td>
+                            <td>@g.Zavod_diskov</td>
+                            <td>@g.Zamen_diskov</td>
+                            <td>@g.Tuning_diski</td>
+
+                            <td>
+                                <form asp-action="Delete" method="post">
+                                    <a asp-action="Generate" class="btn btn-primary btn-sm" asp-route-id="@g.Id">Шаблон</a>
+                                    <a asp-action="Edit"
+                                       class="btn btn-sm btn-warning" asp-route-id="@g.Id">
+                                        Изменить
+                                    </a>
+                                    <input type="hidden" name="Id" value="@g.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        Удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br>
+            <a asp-action="Create" class="btn btn-primary">Создать новый параметр</a>
+        </div>
+    </div>

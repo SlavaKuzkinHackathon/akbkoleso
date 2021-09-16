@@ -1,0 +1,61 @@
+﻿@model List<akbkoleso.ViewModels.ProductViewModel>
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-center my-4">
+            <form asp-controller="Admin" asp-action="Search" class="input-group col-10">
+                <input type="text" name="name" class="form-control" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-dark" href="" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 15 18">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group my-4">
+            @await Html.PartialAsync("_LayoutAdmin")
+        </div>
+    </div>
+    <div class="col-md-9 my-4">
+        <div class="table-responsive">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr><th>Категория</th><th>Наименование</th><th>Закуп</th><th>Розница</th><th>Количество</th><th>Изображение</th></tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var product in Model.AsEnumerable())
+                    {
+                        <tr>
+                            <td>@product.Category</td>
+                            <td>@product.Name</td>
+                            <td>@product.Price &#8381</td>
+                            <td>@product.RetailPrice &#8381</td>
+                            <td>@product.InQuantity</td>
+                            <td><img style='height:65px' ; src="@Url.Content(product.ImagePath)"></td>
+                            <td>
+                                <form asp-action="Delete" method="post">
+                                    <a asp-action="Edit" class="btn btn-sm btn-warning"
+                                       asp-route-id="@product.Id">
+                                        Изменить
+                                    </a>
+                                    <input type="hidden" name="id" value="@product.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        удалить
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

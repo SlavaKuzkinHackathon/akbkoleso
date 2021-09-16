@@ -1,0 +1,79 @@
+﻿@model akbkoleso.ViewModels.ProductViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group my-4">
+           @await Html.PartialAsync("_LayoutAdmin")
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card my-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Добавление нового товара</h4>
+                        <hr />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="AddProduct" asp-antiforgery="true" enctype="multipart/form-data">
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Category">Категория</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" asp-for="Category" class="form-control"  required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Name">Название</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" asp-for="Name" class="form-control" rows="2" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="Price">Закуп</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="Price" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="RetailPrice">Цена</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="RetailPrice" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="InQuantity">Кол-во</label>
+                                </div>
+                                <div class="col-8">
+                                    <input asp-for="InQuantity" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-4">
+                                    <label asp-for="File">Загрузить изображение</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="file" asp-for="File" class="form-control-file" required>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info">Добавить</button>
+                                <a asp-action="GetProducts" class="btn btn-secondary">Отмена</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

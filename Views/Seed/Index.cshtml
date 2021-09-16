@@ -1,0 +1,26 @@
+﻿
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group my-4">
+                @await Html.PartialAsync("_LayoutAdmin")
+            </div>
+            <h3 class="p-2 bg-primary text-white text-center">Тестовая база данных товаров</h3>
+            <form method="post">
+
+                <div class="text-center">
+                    <button type="submit" asp-action="CreateProductionData"
+                            class="btn btn-outline-primary">
+                        Тестовый товар
+                    </button>
+                    <button asp-action="ClearData" class="btn btn-danger">
+                        ! Очистить !
+                    </button>
+                </div>
+            </form>
+            <h5 class="text-center m-2">
+                В тестовой базе данных @ViewBag.Count товаров
+            </h5>
+        </div>
+
+    </div>
+

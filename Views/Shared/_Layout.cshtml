@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Продажа шин, дисков, аккумуляторов в Новосибирске. недорогие шины диски аккумуляторы . зимняя шипованная резина штамповки японские аккумуляторы  Новосибирск." />
+    <meta name="keywords" content="купить шины, диски, аккумуляторы, недорого, автоград Новосибирск" />
+    <title>@ViewData["Title"]  Автоградшина | Шины, Диски, Аккумуляторы в Новосибирске </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        #loading {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: 9999;
+            background: url('@Url.Content("~/images/public/preloader.gif")') no-repeat center center rgb(255, 255, 255);
+        }
+    </style>
+    @await Html.PartialAsync("MetatagsPartial")
+    @await Html.PartialAsync("CssPartial")
+</head>
+<body>
+    @await Html.PartialAsync("HeaderPartial")
+    @await Html.PartialAsync("_NavCategory")
+    <div class="container">
+        <main role="main" class="pb-3">
+            <!-- Спиннер -->
+            <div id="loading"></div>
+            @RenderBody()
+        </main>
+    </div>
+    @await Html.PartialAsync("FooterPartial")
+    @await Html.PartialAsync("ScriptsPartial")
+    @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('div#loading').hide();
+
+        })
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(62460400, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        ecommerce: "dataLayer"
+    });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/62460400" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
+</html>

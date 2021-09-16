@@ -1,0 +1,95 @@
+﻿@model akbkoleso.ViewModels.CartViewModel
+
+@if (Model.Items.Any())
+{
+    <form method="post">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12">
+                <div class="py-4 text-center">
+                    <h2><b>Корзина</b></h2>
+                    <p class="text-center font-weight-light">
+                        Количество товара в корзине: <i class="font-weight-bold text-info">@Model.AllAmount</i>
+                    </p>
+                </div>
+                <table class="table table-condensed table-responsive">
+                    <thead>
+                        <tr>
+                            <th style="width:60%">Товар</th>
+                            <th style="width:12%">Цена</th>
+                            <th style="width:10%">Количество</th>
+                            <th style="width:16%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Items.Count; i++)
+                        {
+                            var item = Model.Items[i];
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-3 text-left">
+                                            <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Product.Id">
+                                                <img src="@Url.Content(item.Product.ImagePath)" alt="" class="img-fluid d-none d-md-block rounded mb-2 shadow">
+                                            </a>
+                                        </div>
+                                        <div class="col-md-9 text-left mt-sm-2">
+                                            <a class="text-info" asp-controller="Product" asp-action="Index" asp-route-id="@item.Product.Id"><h4>@item.Product.Name</h4></a>
+                                            @*<p class="font-weight-light">Brand &amp; Name</p>*@
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><h5>@item.RetailPrice &#8381;</h5></td>
+                                <td>
+                                    <input type="hidden" name="@("Items[" + i + "].Key")" value="@item.Id" />
+                                    <input type="number" min="1" class="form-control text-center" name="@("Items[" + i + "].Value")" value="@item.Amount">
+                                    <p class="text-center"><small>@item.Product.RetailPrice &#8381;/шт</small></p>
+                                </td>
+                                <td class="actions">
+                                    <div class="text-right">
+                                        <button class="btn btn-white border-secondary bg-white btn-md mb-2" asp-action="Update">
+                                            <i class="bi bi-arrow-repeat"></i>
+                                        </button>
+                                        <a class="btn btn-white border-secondary bg-white btn-md mb-2" asp-action="DeleteItem" asp-route-itemId="@item.Id" role="button"><i class="bi bi-trash"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="float-right text-right">
+                    <h4>Итого:</h4>
+                    <h2>@Model.FullPrice &#8381;</h2>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form method="post">
+        <div class="row mt-4 d-flex align-items-center">
+            <div class="col-sm-6 order-md-2 text-right">
+                @for (int i = 0; i < Model.Items.Count; i++)
+                {
+                    var item = Model.Items[i];
+                    <input type="hidden" name="@("Items[" + i + "].Key")" value="@item.Product.Id" />
+                    <input type="hidden" name="@("Items[" + i + "].Value")" value="@item.Amount" />
+                }
+                <button class="btn btn-info mb-4 btn-lg pl-5 pr-5" name="orderbutton" value="" type="submit" asp-controller="CheckOut" asp-action="CreateOrder">
+                    Оформить заказ
+                </button>
+            </div>
+            <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+                <a class="text-info" asp-controller="Home" asp-action="Index"><i class="bi bi-arrow-left mr-2 text-info"></i>Продолжить покупки</a>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+            <div class="starter-template py-5 text-center">
+                <h2><b>В вашей корзине пусто</b></h2>
+                <p class="lead"><a class="text-info" asp-controller="Home" asp-action="Index">Нажмите</a>, чтобы продолжить покупки...</p>
+            </div>
+        </div>
+    </div>
+}

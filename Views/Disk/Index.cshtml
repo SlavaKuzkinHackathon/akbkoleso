@@ -1,0 +1,320 @@
+﻿
+@using  akbkoleso.SortFilterPanViewModel
+
+@model IndexViewModel
+
+@addTagHelper *, akbkoleso
+
+@{
+    ViewData["Title"] = "Автоградшина | Шины, Диски, Аккумуляторы в Новосибирске";
+}
+
+
+
+<div class="row justify-content-around">
+    <a button="submit" asp-controller="Disk" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/param.png" class="param" />
+            </span>
+            Подбор дисков по параметрам
+        </div>
+    </a>
+    <a button="submit" asp-controller="Podbordisk" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/paramAuto.png" class="param" />
+            </span>
+            Подбор дисков по марке авто
+        </div>
+    </a>
+</div>
+<div><br></div>
+<form method="get">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="form-group form-inline">
+                <div class="row" style="background-color : #cccccc; padding: 10px;">
+                    <div class="col-md col-sm">
+                        <select name="namea" id="namea" value="@Model.FilterViewModel.SelectedNameA" class="form-control">
+                            <option value="*">Вылет диска(ET)</option>
+                            <option value="ET-40">-40</option>
+                            <option value="ET-25">-25</option>
+                            <option value="ET-15">-15</option>
+                            <option value="ET-10">-10</option>
+                            <option value="ET0">0</option>
+                            <option value="ET2">2</option>
+                            <option value="ET5">5</option>
+                            <option value="ET10">10</option>
+                            <option value="ET15">15</option>
+                            <option value="ET20">20</option>
+                            <option value="ET21">21</option>
+                            <option value="ET22">22</option>
+                            <option value="ET25">25</option>
+                            <option value="ET26">26</option>
+                            <option value="ET27">27</option>
+                            <option value="ET28">28</option>
+                            <option value="ET29">29</option>
+                            <option value="ET30">30</option>
+                            <option value="ET31">31</option>
+                            <option value="ET32">32</option>
+                            <option value="ET33">33</option>
+                            <option value="ET34">34</option>
+                            <option value="ET35">35</option>
+                            <option value="ET36">36</option>
+                            <option value="ET37">37</option>
+                            <option value="ET37.5">37.5</option>
+                            <option value="ET38">38</option>
+                            <option value="ET38.5">38.5</option>
+                            <option value="ET39">39</option>
+                            <option value="ET39.5">39.5</option>
+                            <option value="ET40">40</option>
+                            <option value="ET41">41</option>
+                            <option value="ET42">42</option>
+                            <option value="ET42.5">42.5</option>
+                            <option value="ET43">43</option>
+                            <option value="ET44">44</option>
+                            <option value="ET45">45</option>
+                            <option value="ET46">46</option>
+                            <option value="ET47">47</option>
+                            <option value="ET47.5">47.5</option>
+                            <option value="ET48">48</option>
+                            <option value="ET48.5">48.5</option>
+                            <option value="ET49">49</option>
+                            <option value="ET49.5">49.5</option>
+                            <option value="ET50">50</option>
+                            <option value="ET50.5">50.5</option>
+                            <option value="ET51">51</option>
+                            <option value="ET52.5">52,5</option>
+                            <option value="ET53">53</option>
+                            <option value="ET54">54</option>
+                            <option value="ET55">55</option>
+                            <option value="ET56">56</option>
+                            <option value="ET57">57</option>
+                            <option value="ET58">58</option>
+                            <option value="ET60">59</option>
+                            <option value="ET62">62</option>
+                            <option value="ET68">68</option>
+                            <option value="ET66">66</option>
+                            <option value="ET105">105</option>
+                            <option value="ET106">106</option>
+
+                        </select>
+                    </div>
+                    <div class=" col-md col-sm">
+                        <select name="nameb" id="nameb" value="@Model.FilterViewModel.SelectedNameB" class="form-control">
+                            <option value="*">Диаметр(дюйм)</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-md col-sm">
+                        <select name="namec" id="namec" value="@Model.FilterViewModel.SelectedNameC" class="form-control">
+                            <option value="*">Сверловка</option>
+                            <option value="4*100 ">4х100</option>
+                            <option value="4*108">4x108</option>
+                            <option value="4*114.3">4x114,3</option>
+                            <option value="4*98">4x98</option>
+                            <option value="5*100">5x100</option>
+                            <option value="5*105">5x105</option>
+                            <option value="5*108">5x108</option>
+                            <option value="5*112">5x112</option>
+                            <option value="5*114.3">5x114,3</option>
+                            <option value="5*115">5x115</option>
+                            <option value="5*118">5x118</option>
+                            <option value="5*120">5x120</option>
+                            <option value="5*130">5x130</option>
+                            <option value="5*139.7">5x139,7</option>
+                            <option value="5*150">5x150</option>
+                            <option value="5*160">5x160</option>
+                            <option value="6*130">6x130</option>
+                            <option value="6*139.7">6x139.7</option>
+                            <option value="6*170">6x170</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-md col-sm">
+                        <select name="named" id="named" value="@Model.FilterViewModel.SelectedNameD" class="form-control">
+                            <option value="*">DIA (ЦО)</option>
+                            <option value="54.1">54,1</option>
+                            <option value="56.1">56,1</option>
+                            <option value="56.6">56,6</option>
+                            <option value="57.1">57,1</option>
+                            <option value="58.5">58,5</option>
+                            <option value="58.6">58,6</option>
+                            <option value="60.1">60,1</option>
+                            <option value="63.3">63,3</option>
+                            <option value="63.35">63,35</option>
+                            <option value="64.1">64,1</option>
+                            <option value="65">65</option>
+                            <option value="65.1">65,1</option>
+                            <option value="66.1">66,1</option>
+                            <option value="66.6">66,6</option>
+                            <option value="67.1">67,1</option>
+                            <option value="69.1">69,1</option>
+                            <option value="70.3">70,3</option>
+                            <option value="71.1">71,1</option>
+                            <option value="71.6">71,6</option>
+                            <option value="72.6">72,6</option>
+                            <option value="73.1">73,1</option>
+                            <option value="74.1">74,1</option>
+                            <option value="77.8">77,8</option>
+                            <option value="78.1">78,1</option>
+                            <option value="84.1">84,1</option>
+                            <option value="89.1">89,1</option>
+                            <option value="92.3">92,3</option>
+                            <option value="92.5">92,5</option>
+                            <option value="98">98</option>
+                            <option value="98.5">98,5</option>
+                            <option value="98.6">98,6</option>
+                            <option value="106.1">106,1</option>
+                            <option value="106.3">106,3</option>
+                            <option value="107.1">107,1</option>
+                            <option value="108">108</option>
+                            <option value="108.1">108,1</option>
+                            <option value="108.4">108,4</option>
+                            <option value="108.5">108,5</option>
+                            <option value="108.6">108,6</option>
+                            <option value="108.7">108,7</option>
+                            <option value="109.7">109,7</option>
+                            <option value="110.1">110,1</option>
+                            <option value="110.3">110,3</option>
+                            <option value="110.5">110,5</option>
+                            <option value="130.1">130,1</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-md col-sm">
+                        <select name="namef" id="namef" value="@Model.FilterViewModel.SelectedNameF" class="form-control">
+                            <option value="*">Ширина обода</option>
+                            <option value="4.5*">4,5</option>
+                            <option value="5.0*">5</option>
+                            <option value="5.5*">5,5</option>
+                            <option value="6.0*">6</option>
+                            <option value="6.5*">6,5</option>
+                            <option value="7.0*">7</option>
+                            <option value="7.5*">7,5</option>
+                            <option value="8.0*">8</option>
+                            <option value="8.5*">8,5</option>
+                            <option value="9.0*">9</option>
+                            <option value="9.5*">9,5</option>
+                            <option value="10.0*">10</option>
+                            <option value="4.5*">4,5</option>
+                            <option value="11.0*">11</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col-md col-sm">
+                        <select name="nameg" id="nameg" value="@Model.FilterViewModel.SelectedNameG" class="form-control">
+                            <option value="*">Производитель</option>
+                            <option value="ALCASTA">ALCASTA</option>
+                            <option value="ARRIVO">ARRIVO</option>
+                            <option value="Asterro">Asterro</option>
+                            <option value="CROSS STREET">CROSS STREET</option>
+                            <option value="iFree">iFree</option>
+                            <option value="LS">LS</option>
+                            <option value="Megami">Megami</option>
+                            <option value="NZ">NZ</option>
+                            <option value="Remain">Remain</option>
+                            <option value="Replay">Replay</option>
+                            <option value="Replika FR">Replika FR</option>
+                            <option value="Replika LA">Replika LA</option>
+                            <option value="Replika LS">Replika LS</option>
+                            <option value="Replika TD">Replika TD</option>
+                            <option value="SDT">SDT</option>
+                            <option value="SKAD">SKAD</option>
+                            <option value="STEEL WHEELS">STEEL WHEELS</option>
+                            <option value="Steger">Steger</option>
+                            <option value="TREBL">TREBL</option>
+                            <option value="X-Race">X-Race</option>
+                            <option value="YST">YST</option>
+                            <option value="K&K">K&K</option>
+                            <option value="КиК">КиК</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-sm"><input type="submit" value="Поиск" class="btn btn-info" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div><br></div>
+<a asp-action="Index"
+   asp-route-sortOrder="@(Model.SortViewModel.RetailPriceSort)">Сортировать по цене</a>
+
+<a asp-action="Index" asp-route-sortOrder="@(Model.SortViewModel.InQuantitySort)">Сортировать по количеству</a>
+
+<div class="row justify-content-around">
+    @foreach (var product in Model.Products)
+    {
+        <div class="card border-secondary mb-4" style="width: 18rem;">
+            <a asp-controller="Product" asp-route-id="@product.Id">
+                <img class="card-img-top"
+                     src="@Url.Content(product.ImagePath)" alt="Изображение товара">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a class="text-dark" asp-controller="Product" asp-route-id="@product.Id">@product.Name</a>
+                </h4>
+                <h5>@product.RetailPrice &#8381;</h5>
+                <p class="card-text">Количество: @product.InQuantity шт.</p>
+            </div>
+            <div class="card-body d-flex align-items-end">
+                <a class="btn btn-info" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Id"
+                   role="button">В корзину</a>
+            </div>
+        </div>
+    }
+</div>
+<br>
+<page-link page-model="Model.PageViewModel" page-action="Index"
+           page-url-sortorder="@(Model.SortViewModel.Current)"></page-link>
+
+@section scripts
+    {
+    <script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".proItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+
+        $(function () {
+            var selects = document.querySelectorAll('select');
+            for (var i = 0, select; select = selects[i]; i++) {
+                if (sessionStorage[select.id] !== undefined) {
+                    select.selectedIndex = sessionStorage[select.id];
+                }
+                select.onchange = function () {
+                    sessionStorage[this.id] = this.selectedIndex;
+                }
+            }
+        })
+
+        $(function () {
+            $("#param").click(function () {
+                sessionStorage.clear();
+            });
+            $("#paramb").click(function () {
+                sessionStorage.clear();
+            });
+        })
+    </script>
+}

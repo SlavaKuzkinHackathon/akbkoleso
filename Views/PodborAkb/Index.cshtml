@@ -1,0 +1,155 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Podbor_akb>
+
+@using System.Text
+@using  akbkoleso.SortFilterPanViewModel
+
+@{
+    ViewData["Title"] = "Автоградшина | Подбор аккумуляторов по автомобилю";
+    Layout = "_Layout";
+}
+    <div class="row justify-content-around">
+        <a button="submit" asp-controller="Tyres" asp-action="Index" class="text-dark">
+            <div>
+                <span>
+                    <img src="~/images/public/param.png" class="param" />
+                </span>
+                Подбор шин по параметрам
+            </div>
+        </a>
+        <a button="submit" asp-controller="PodborTyres" asp-action="Index" class="text-dark">
+            <div>
+                <span>
+                    <img src="~/images/public/paramAuto.png" class="param" />
+                </span>
+                Подбор шин по марке авто
+            </div>
+        </a>
+    </div>
+<div><br></div>
+
+<form method="get" class="form-inline">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="form-group form-inline">
+                <div class="row" style="background-color : #cccccc; padding: 10px;">
+                    <div class="col-md col-sm">
+                        <select name="vendor" asp-items="ViewBag.vendor" class="form-control" id="vendor">
+                            <option value="">--Выберите марку--</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="car" class="form-control" id="car">
+                            <option value="">--Выберите модель--</option>s
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="modification" class="form-control" id="modification">
+                            <option value="">--Выберите модификацию--</option>
+                        </select>
+                    </div>
+                    <div lass="col-md col-sm">
+                        <input type="submit" value="Фильтр" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div><br></div>
+<div class="table-responsive">
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr>
+                <th>Марка</th>
+                <th>Модель</th>
+                <th>Модификация</th>
+                <th>Дата начала выпуска</th>
+                <th>Дата окончания выпуска</th>
+                <th>Мощность</th>
+                <th>Емкость от</th>
+                <th>Емкость до</th>
+                <th>Полярность</th>
+                <th>Длина</th>
+                <th>Ширина</th>
+                <th>Высота</th>
+                <th>Диаметр клем</th>
+                <th>Ток холодной прокрутки</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>
+                        @t.Vendor
+                    </td>
+                    <td>
+                        @t.Car
+                    </td>
+                    <td>
+                        @t.Modification
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Date_start</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4"> @t.Date_end</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Mochnost</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Emkost_ot</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Emkost_do</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Polarnost</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Dlina</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Shirina</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Visota</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Diametr_klem</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Tok_xol_prok</div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            $('#vendor').change(function ()
+                    {
+                        // получаем выбранный id
+                        var id = $(this).val();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetItemsCarsAkb")/' + id,
+                            success: function (data) {
+                                // заменяем содержимое присланным частичным представлением
+                                $('#car').replaceWith(data);
+                            }
+                        });
+             });
+        })
+
+    </script>
+
+}

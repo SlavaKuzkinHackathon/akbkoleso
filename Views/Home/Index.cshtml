@@ -1,0 +1,107 @@
+﻿@model akbkoleso.ViewModels.PagerViewModel
+
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-center my-4">
+            <form method="get" asp-controller="Home" asp-action="Search" class="input-group col-10">
+                <input type="text" name="name" class="form-control" placeholder="Поиск"
+                    aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-dark" href="" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 15 18">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="container-slide">
+        <div class="slide" style="background-image: url('@Url.Content("~/images/public/photo-service-akb.jpg")');">
+            <h3>Диагностика аккумуляторов</h3>
+        </div>
+        <div class="slide" style="background-image: url('@Url.Content("~/images/public/photo-wheel.jpg")');">
+            <h3>Диски</h3>
+        </div>
+        <div class="slide active" style="background-image: url('@Url.Content("~/images/public/photo-shop.jpg")');">
+            <h3>Шины</h3>
+            </div>
+        <div class="slide" style="background-image: url('@Url.Content("~/images/public/akb.jpg")');">
+            <h3>Аккумуляторы</h3>
+        </div>
+        <div class="slide" style="background-image: url('@Url.Content("~/images/public/photo-tyres-shop1.jpg")');">
+            <h3>Подбор шин и дисков</h3>
+        </div>
+    </div>
+    <div class="row justify-content-around">
+
+
+        @foreach (var product in Model.ProductsOnCurrentPage.AsEnumerable())
+        {
+            <div class="card border-secondary mb-4" style="width: 18rem;">
+                <a asp-controller="Product" asp-route-id="@product.Id">
+                    <img class="card-img-top"
+                         src="@Url.Content(product.ImagePath)" alt="Изображение товара">
+                </a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a class="text-dark" asp-controller="Product" asp-route-id="@product.Id">@product.Name</a>
+                    </h4>
+                    <h5>@product.RetailPrice &#8381;</h5>
+                    <p class="card-text">Количество: @product.InQuantity шт.</p>
+                </div>
+                <div class="card-body d-flex align-items-end">
+                    <a class="btn btn-info" asp-controller="Cart" asp-action="Add" asp-route-id="@product.Id"
+                       role="button">В корзину</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<nav>
+    <ul class="pagination justify-content-center mt-4">
+        @if (Model.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link text-dark" asp-action="Index" asp-route-page="@(Model.CurrentPage - 1)">Назад</a>
+            </li>
+        }
+        @if (!Model.HasPreviousPage)
+        {
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Назад</a>
+            </li>
+        }
+        @foreach (var pageNumber in Model.Pages)
+        {
+            @if (pageNumber == Model.CurrentPage)
+            {
+                <li class="page-item active"><a asp-action="Index" asp-route-page="@pageNumber"
+                class="page-link bg-info border-info  text-white">@pageNumber</a></li>
+            }
+            else
+            {
+                <li class="page-item"><a asp-action="Index" asp-route-page="@pageNumber"
+                class="page-link text-dark">@pageNumber</a></li>
+            }
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link text-dark" asp-action="Index" asp-route-page="@(Model.CurrentPage + 1)">Вперед</a>
+            </li>
+        }
+        @if (!Model.HasNextPage)
+        {
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">Вперед</a>
+            </li>
+        }
+    </ul>
+</nav>
+

@@ -1,0 +1,10 @@
+﻿@*@model IEnumerable<akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels>
+
+<select id="modification" name="Modification" class="form-control">
+    <option value="">--Выберите модификацию--</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Modification">@item.Modification</option>
+    }
+</select>*@
+

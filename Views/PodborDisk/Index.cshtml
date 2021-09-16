@@ -1,0 +1,130 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels>
+
+@using System.Text
+@using  akbkoleso.SortFilterPanViewModel
+
+@{
+    ViewData["Title"] = "Автоградшина | Подбор дисков по автомобилю";
+    Layout = "_Layout";
+}
+<div class="row justify-content-around">
+    <a button="submit" asp-controller="Disk" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/param.png" class="param" />
+            </span>
+            Подбор дисков по параметрам
+        </div>
+    </a>
+    <a button="submit" asp-controller="Podbordisk" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/paramAuto.png" class="param" />
+            </span>
+            Подбор дисков по марке авто
+        </div>
+    </a>
+</div>
+<div><br></div>
+<form method="get" class="form-inline">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="form-group form-inline">
+                <div class="row" style="background-color : #cccccc; padding: 10px;">
+                    <div class="col-md col-sm">
+                        <select name="vendor" asp-items="ViewBag.vendor" class="form-control" id="vendor">
+                            <option value="">--Выберите марку--</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="car" class="form-control" id="car">
+                            <option value="">--Выберите модель--</option>s
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="year" class="form-control" id="year">
+                            <option value="">--Выберите год--</option>
+                        </select>
+                    </div>
+                    <div lass="col-md col-sm">
+                        <input type="submit" value="Фильтр" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div><br></div>
+<div class="table-responsive">
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr><th>Марка</th><th>Модель</th><th>Год</th><th>Модификация</th><th>Гайка/Болт</th><th>DIA (ЦО)</th><th>Заводская комплектация дисков</th><th>Сверловка</th></tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>
+                        @t.Vendor
+                    </td>
+                    <td>
+                        @t.Car
+                    </td>
+                    <td>
+                        @t.Year
+                    </td>
+                    <td>
+                        @t.Modification
+                    </td>
+
+
+                    <td>
+                        <div style="color: #aa00a4">@t.Gaika</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4"> @t.Diametr</div>
+                    </td>
+                    <td>
+                        <div style="color: #aa00a4">@t.Zavod_diskov</div>
+                    </td>
+                    <td>
+                        @{
+                            string srt3 = t.Pcd;
+                            char[] separator3 = { '|' };
+                            string[] srtlist3 = srt3.Split(separator3);
+                            @foreach (String z in srtlist3)
+                            {
+                                @Html.ActionLink(t.Pcd, "Index", "Disk", new { SearchName = z.Replace(",", "."), @style = "color: #aa00a5" })
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#vendor').change(function ()
+                    {
+                        // получаем выбранный id
+                        var id = $(this).val();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetItemsCarsDisk")/' + id,
+                            success: function (data) {
+                                // заменяем содержимое присланным частичным представлением
+                                $('#car').replaceWith(data);
+                            }
+                        });
+             });
+        })
+
+    </script>
+
+}

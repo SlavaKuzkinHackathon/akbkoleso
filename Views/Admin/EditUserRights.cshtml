@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model akbkoleso.ViewModels.ChangeRoleViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group my-4">
+            @await Html.PartialAsync("_LayoutAdmin")
+        </div>
+    </div>
+    <div class="col-md-9 my-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Изменение ролей пользователя @Model.UserEmail</h4>
+                        <hr />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-action="EditUserRights" method="post">
+                            <input type="hidden" name="userId" value="@Model.UserId" />
+                            <div class="form-group">
+                                @foreach (IdentityRole role in Model.AllRoles)
+                                {
+                                    <input type="checkbox" name="roles" value="@role.Name"
+                                           @(Model.UserRoles.Contains(role.Name) ? "checked=\"checked\"" : "") /> @role.Name <br />
+                                    }
+                            </div>
+                            <div class="row">
+                                <div class="d-flex col-md-12">
+                                    <div class="mr-auto">
+                                        <a class="text-info" asp-action="GetUser" asp-route-id="@Model.UserId"><i class="bi bi-arrow-left mr-2 text-info"></i>Назад</a>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <button type="submit" class="btn btn-info">Сохранить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7TfD1GyQ7Ee/jKWwuWMRJwAAAAACAAAAAAAQZgAAAAEAACAAAAAtlT5n4PBHUuaf/2FTVO+rIq3+M9PKXmRP0vJNBQdiygAAAAAOgAAAAAIAACAAAAAMOo0+69xLYnyCuqIvYeznZ2Q/L3r1dI124MkHPdQ3ZyAAAAD/VXgXoQoAegP9ptJYq8qAxeyG55bMChONlKyYq7uQ3kAAAACtZnJIpf12sNTvy0sUHsUUdRLIcCbLC0yxv7qnzCAnd929rMjv6FjMcSz8uI/mJ+XUwC7y4QspneHIAOXfkK2s</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=localhost%3bDatabase=u1038213_akbkoleso_9%3bIntegrated Security=False%3bUser ID=u1038213_Slava_888%3bPassword=qweasdzxcHH1%24</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

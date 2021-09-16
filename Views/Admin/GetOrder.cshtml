@@ -1,0 +1,103 @@
+﻿@model akbkoleso.ViewModels.OrderViewModel
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group my-4">
+            @await Html.PartialAsync("_LayoutAdmin")
+        </div>
+    </div>
+    <div class="col-md-9 my-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Заказ № @Model.Number</h4>
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-5 order-md-1">
+                                    <div class="form-group row">
+                                        @for (int i = Model.OrderItems.Count - 1; i >= 0; i--)
+                                        {
+                                            var order = Model.OrderItems[i];
+                                        <div class="form-group row">
+                                            <div class="col-md-4">
+                                                <a asp-controller="Product" asp-action="Index" asp-route-id="@order.Product.Id">
+                                                    <img class="img-fluid d-none d-md-block rounded mb-1 shadow" width="110" height="110" src="@Url.Content(order.Product.ImagePath)" alt="Изображение товара" />
+                                                </a>
+                                            </div>
+                                            <div class="form-group col-md-8 ">
+                                                <div class="col-md-12"><a class="text-info" asp-controller="Product" asp-action="Index" asp-route-id="@order.Product.Id">@order.Product.Name</a></div>
+                                                @if (order.Amount > 1)
+                                                {
+                                                    <div class="col-md-12"><h6>@order.Product.RetailPrice &#8381; х @order.Amount шт.</h6></div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-md-12"><h6>@order.Product.RetailPrice &#8381;</h6></div>
+                                                }
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Кол-во товарных групп:</div>
+                                        <div class="col-7">@Model.OrderItems.Count</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Дата и время оформления:</div>
+                                        <div class="col-7">@Model.DateTime.ToString("d") в @Model.DateTime.ToString("t")</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Адрес доставки:</div>
+                                        <div class="col-7">@Model.UserAddress</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Получатель:</div>
+                                        <div class="col-7">@Model.UserFirstName @Model.UserLastName</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Телефон:</div>
+                                        <div class="col-7">@Model.UserPhone</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Email:</div>
+                                        <div class="col-7">@Model.UserEmail</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Комментарий:</div>
+                                        <div class="col-7">@Model.UserComment</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Сумма заказа:</div>
+                                        <div class="col-7">@Model.FullPrice &#8381;</div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-5" style="color:darkgray">Статус заказа:</div>
+                                        <div class="dropdown col-7">
+                                            <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                @Model.Status
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" Asp-action="ChangeOrderStatus" Asp-route-status="Создан" Asp-route-id="@Model.Id">Создан</a>
+                                                <a class="dropdown-item" Asp-action="ChangeOrderStatus" Asp-route-status="Обработан" Asp-route-id="@Model.Id">Обработан</a>
+                                                <a class="dropdown-item" Asp-action="ChangeOrderStatus" Asp-route-status="В пути" Asp-route-id="@Model.Id">В пути</a>
+                                                <a class="dropdown-item" Asp-action="ChangeOrderStatus" Asp-route-status="Отменен" Asp-route-id="@Model.Id">Отменен</a>
+                                                <a class="dropdown-item" Asp-action="ChangeOrderStatus" Asp-route-status="Доставлен" Asp-route-id="@Model.Id">Доставлен</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

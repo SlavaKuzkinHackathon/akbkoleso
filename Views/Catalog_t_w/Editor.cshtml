@@ -1,0 +1,84 @@
+﻿@model akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels
+
+
+
+<form asp-action="@(ViewBag.CreateMode ? "Create" : "Edit")" method="post" enctype="multipart/form-data">
+    <input name="original.Id" value="@Model?.Id" type="hidden" />
+    <input name="original.Vendor" value="@Model?.Vendor" type="hidden" />
+    <input name="original.Car" value="@Model?.Car" type="hidden" />
+    <input name="original.Year" value="@Model?.Year" type="hidden" />
+    <input name="original.Modification" value="@Model?.Modification" type="hidden" />
+    <input name="original.Pcd" value="@Model?.Pcd" type="hidden" />
+    <input name="original.Diametr" value="@Model?.Diametr" type="hidden" />
+    <input name="original.Gaika" value="@Model?.Gaika" type="hidden" />
+    <input name="original.Zavod_shini" value="@Model?.Zavod_shini" type="hidden" />
+    <input name="original.Zamen_shini" value="@Model?.Zamen_shini" type="hidden" />
+    <input name="original.Tuning_shini" value="@Model?.Tuning_shini" type="hidden" />
+    <input name="original.Zavod_diskov" value="@Model?.Zavod_diskov" type="hidden" />
+    <input name="original.Zamen_diskov" value="@Model?.Zamen_diskov" type="hidden" />
+    <input name="original.Tuning_diski" value="@Model?.Tuning_diski" type="hidden" />
+
+    <div class="form-group">
+        <label asp-for="Id">Марка</label>
+        <input asp-for="Id" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Vendor">Марка</label>
+        <input asp-for="Vendor" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Car">Модель</label>
+        <input asp-for="Car" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Год</label>
+        <input asp-for="Year" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Modification">Модификация</label>
+        <input asp-for="Modification" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Pcd">Сверловка</label>
+        <input asp-for="Pcd" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Diametr">ЦО</label>
+        <input asp-for="Diametr" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Gaika">Гайка</label>
+        <input asp-for="Gaika" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zavod_shini">Завод пареметр шин</label>
+        <input asp-for="Zavod_shini" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zamen_shini">Замена шин</label>
+        <input asp-for="Zamen_shini" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Tuning_shini">Тюнинг шины</label>
+        <input asp-for="Tuning_shini" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zavod_diskov">Заводской параметр дисков</label>
+        <input asp-for="Zavod_diskov" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zamen_diskov">Замена дисков</label>
+        <input asp-for="Zamen_diskov" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Tuning_diski">Тюнинг дисков</label>
+        <input asp-for="Tuning_diski" class="form-control" />
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+
+
+

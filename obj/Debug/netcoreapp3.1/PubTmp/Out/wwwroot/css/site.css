@@ -1,0 +1,261 @@
+﻿.adressok {
+    font-size: 15px;
+}
+a {
+    color: #aa00d3;
+}
+    a.active {
+        color: #aa00d3;
+    }
+
+.line {
+  border-top: 5px solid #aa00d5;
+}
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.gamburger {
+  width: 25px;
+  outline: none;
+}
+.navbar {
+  background: #fff;
+}
+
+.logo {
+  height: 27px;
+}
+img.phone{
+    height: 15px;
+}
+
+а .navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.nav-link {
+  color: #aa00d5;
+}
+
+.rating span {
+  margin: 0.1rem;
+}
+
+.cart-quantity {
+  color: #cd39f1;
+}
+
+.param{
+    width: 18px;
+}
+
+.navCategory {
+    margin:auto;
+}
+/* Provide sufficient contrast against white background */
+.btn-primary {
+    color: #fff;
+    background-color: #aa00d5;
+    border-color: #aa00d3;
+}
+
+
+.nav-pills .nav-link.active,
+.nav-pills .show .nav-link {
+    color: #aa00d5;
+    background-color: #aa00d5;
+    border-color: #aa00d3;
+}
+
+
+/*  слайдер */
+
+.container-slide {
+    width: 100%;
+    display: flex;
+    padding: 0 10px;
+}
+
+.slide {
+    height: 39vh;
+    border-radius: 17px;
+    margin: 7px;
+    cursor: pointer;
+    color: #fff;
+    flex: 2;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 500ms ease-in-out;
+}
+
+    .slide h3 {
+        position: absolute;
+        font-size: 18px;
+        bottom: 10px;
+        left: 5px;
+        margin: 0;
+        opacity: 0;
+        text-shadow: 1px 0 1px #aa00d5, 0 1px 1px #000, -1px 0 1px #000, 0 -1px 1px #aa00d5;
+    }
+
+    .slide.active {
+        flex: 10;
+        height: 39vh;
+    }
+
+        .slide.active h3 {
+            opacity: 1;
+            transition: opacity 0.3s ease-in 0.4s;
+        }
+
+
+/*слайдер end*/
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: 'Ubuntu', sans-serif;
+}
+    
+.footer {
+    position: absolute;
+    background-color: #aa00d5;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+/*card*/
+.card {
+  border-radius: 25px;
+  margin: 15px 5px 5px 5px;
+}
+
+.card-img-top{
+  border-radius: 25px;
+}
+/*card end*/
+
+/*_NavCategory  btn-outline-brand*/
+
+.btn-outline-brand {
+    margin: 12px 0;
+    color: #aa00d5;
+    border-color: #aa00d5;
+}
+
+    .btn-outline-brand:hover {
+        color: #fff;
+        background-color: #aa00d5;
+        border-color: #aa00d5;
+    }
+
+    .btn-outline-brand:focus, .btn-outline-brand.focus {
+        box-shadow: 0 0 0 0.2rem rgba(170, 0, 212, 0.5);
+    }
+
+    .btn-outline-brand.disabled, .btn-outline-brand:disabled {
+        color: #aa00d5;
+        background-color: transparent;
+    }
+
+    .btn-outline-brand:not(:disabled):not(.disabled):active, .btn-outline-brand:not(:disabled):not(.disabled).active,
+    .show > .btn-outline-brand.dropdown-toggle {
+        color: #fff;
+        background-color: #aa00d5;
+        border-color: #aa00d5;
+    }
+
+        .btn-outline-brand:not(:disabled):not(.disabled):active:focus, .btn-outline-brand:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-outline-brand.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgba(170, 0, 212, 0.5);
+        }
+
+/*_NavCategory end*/
+.btn-info {
+    color: #fff;
+    background-color: #aa00d5;
+    border-color: #aa00d5;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #aa00d5;
+    border-color: #aa00d5;
+}
+
+    .btn-info:focus, .btn-info.focus {
+        box-shadow: 0 0 0 0.2rem rgba(170, 0, 212, 0.5);
+    }
+
+    .btn-info.disabled, .btn-info:disabled {
+        color: #aa00d5;
+        background-color: transparent;
+    }
+
+    .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
+    .show > .btn-info.dropdown-toggle {
+        color: #fff;
+        background-color: #aa00d5;
+        border-color: #aa00d5;
+    }
+
+        .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus,
+        .show > .btn-info.dropdown-toggle:focus {
+            box-shadow: 0 0 0 0.2rem rgba(170, 0, 212, 0.5);
+        }
+
+.page-link-brand.active .page-item-brand {
+    color: #fff;
+    background-color: #aa00d5;
+    border-color: #aa00d5;
+}
+
+/**Polzun*/
+
+/*Polzun end*/

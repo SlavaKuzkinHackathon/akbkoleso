@@ -1,0 +1,9 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels>
+
+<select id="year" name="Year" class="form-control">
+    <option value="">--Выберите год--</option>
+    @foreach (var item in Model)
+    {
+        <option value="@item.Year">@item.Year</option>
+    }
+</select>

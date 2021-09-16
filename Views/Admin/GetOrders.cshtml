@@ -1,0 +1,52 @@
+﻿@model List<akbkoleso.ViewModels.OrderViewModel>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group my-4">
+                @await Html.PartialAsync("_LayoutAdmin")
+            </div>
+        </div>
+        <div class="col-md-9 my-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Список заказов</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 table-responsive">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>№</th>
+                                        <th>Кол-во товарных групп</th>
+                                        <th>Сумма</th>
+                                        <th>Статус</th>
+                                        <th>Пользователь (логин)</th>
+                                        <th>Дата</th>
+                                        <th>Время</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int i = Model.Count - 1; i >= 0; i--)
+                                    {
+                                        var order = Model[i];
+                                    <tr class="table-row" data-href="/Admin/GetOrder/@order.Id">
+                                        <td>@order.Number</td>
+                                        <td>@order.OrderItems.Count</td>
+                                        <td>@order.FullPrice &#8381;</td>
+                                        <td>@order.Status</td>
+                                        <td>@order.UserEmail</td>
+                                        <td>@order.DateTime.ToString("d")</td>
+                                        <td>@order.DateTime.ToString("t")</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

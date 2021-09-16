@@ -1,0 +1,158 @@
+﻿@model IEnumerable<akbkoleso.Models.Admin.Catalog.Catalog_tires_wheels>
+
+@using System.Text
+@using  akbkoleso.SortFilterPanViewModel
+
+@{
+    ViewData["Title"] = "Автоградшина | Подбор шин по параметрам авто";
+    Layout = "_Layout";
+}
+<div class="row justify-content-around">
+    <a button="submit" asp-controller="Tyres" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/param.png" class="param" />
+            </span>
+            Подбор шин по параметрам
+        </div>
+    </a>
+    <a button="submit" asp-controller="PodborTyres" asp-action="Index" class="text-dark">
+        <div>
+            <span>
+                <img src="~/images/public/paramAuto.png" class="param" />
+            </span>
+            Подбор шин по марке авто
+        </div>
+    </a>
+</div>
+<div><br></div>
+
+<form method="get" class="form-inline">
+    <div class="container-fluid">
+        <div class="row justify-content-around">
+            <div class="form-group form-inline">
+                <div class="row" style="background-color : #cccccc; padding: 10px;">
+                    <div class="col-md col-sm">
+                        <select name="vendor" asp-items="ViewBag.vendor" class="form-control" id="vendor" aria-label="Default select example">
+                            <option value="">--Выберите марку--</option>
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="car" class="form-control" id="car" aria-label="Default select example">
+                            <option value="">--Выберите модель--</option>s
+                        </select>
+                    </div>
+                    <div class="col-md col-sm">
+                        <select name="year" class="form-control" id="year" aria-label="Default select example">
+                            <option value="">--Выберите год--</option>
+                        </select>
+                    </div>
+                    <div lass="col-md col-sm">
+                        <input type="submit" value="Фильтр" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div><br></div>
+<div class="table-responsive">
+    <table class="table table-sm table-striped">
+        <thead>
+            <tr><th>Марка</th><th>Модель</th><th>Год</th><th>Модификация</th><th>Заводские параметры шин</th><th>Варианты замены шин</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>
+                        @t.Vendor
+                    </td>
+                    <td>
+                        @t.Car
+                    </td>
+                    <td>
+                        @t.Year
+                    </td>
+                    <td>
+                        @t.Modification
+                    </td>
+                    <td>
+                        @{
+                            string str = t.Zavod_shini;
+                            char[] spearator = { '|' };
+                            @if (str == null)
+                            {@t.Zavod_shini }
+                        else
+                        {
+                            string[] strlist = str.Split(spearator);
+                            @foreach (String s in strlist)
+                            {
+                                <div>
+                                    @Html.ActionLink(t.Zavod_shini, "Index", "Tyres", new { SearchName = s.Replace(" ", "") }, new { @style = "color: #aa00a2" })
+                                </div>
+                            }
+                        }
+                        }
+                    </td>
+                    <td>
+                        @{
+                            string srt = t.Zamen_shini;
+                            char[] separator = { '|' };
+                            @if (srt == null)
+                            {
+                                @t.Zamen_shini
+                            }
+                            else
+                            {
+                                string[] srtlist = srt.Split(separator);
+                                @foreach (String z in srtlist)
+                                {
+                                    <div>
+                                        @Html.ActionLink(z, "Index", "Home", new { SearchName = z.Replace(" ", "") }, new { @style = "color: #aa00a2" })
+                                    </div>
+                                }
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            $('#vendor').change(function ()
+                    {
+                        // получаем выбранный id
+                        var id = $(this).val();
+                        $.ajax({
+                            type: 'GET',
+                            url: '@Url.Action("GetItemsCars")/' + id,
+                            success: function (data) {
+                                // заменяем содержимое присланным частичным представлением
+                                $('#car').replaceWith(data);
+                            }
+                        });
+             });
+        })
+
+        $(function () {
+            $("#param").click(function () {
+                sessionStorage.clear();
+            });
+            $("#paramb").click(function () {
+                sessionStorage.clear();
+            });
+    })
+
+    </script>
+
+}

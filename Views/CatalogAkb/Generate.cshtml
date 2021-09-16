@@ -1,0 +1,84 @@
+﻿@model akbkoleso.Models.Admin.Catalog.Podbor_akb
+
+<form method="post" enctype="multipart/form-data">
+    <input name="original.Id" value="@Model?.Id" type="hidden" />
+    <input name="original.Vendor" value="@Model?.Vendor" type="hidden" />
+    <input name="original.Car" value="@Model?.Car" type="hidden" />
+    <input name="original.Modification" value="@Model?.Modification" type="hidden" />
+    <input name="original.Date_start" value="@Model?.Date_start" type="hidden" />
+    <input name="original.Date_end" value="@Model?.Date_end" type="hidden" />
+    <input name="original.Mochnost" value="@Model?.Mochnost" type="hidden" />
+    <input name="original.Emkost_ot" value="@Model?.Emkost_ot" type="hidden" />
+    <input name="original.Emkost_do" value="@Model?.Emkost_do" type="hidden" />
+    <input name="original.Polarnost" value="@Model?.Polarnost" type="hidden" />
+    <input name="original.Dlina" value="@Model?.Dlina" type="hidden" />
+    <input name="original.Shirina" value="@Model?.Shirina" type="hidden" />
+    <input name="original.Visota" value="@Model?.Visota" type="hidden" />
+    <input name="original.Diametr_klem" value="@Model?.Diametr_klem" type="hidden" />
+    <input name="original.Tok_xol_prok" value="@Model?.Tok_xol_prok" type="hidden" />
+
+    <div class="form-group">
+        <label asp-for="Id">Id</label>
+        <input asp-for="Id" class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Vendor">Марка</label>
+        <input asp-for="Vendor" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Car">Модель</label>
+        <input asp-for="Car" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Modification">Модификация</label>
+        <input asp-for="Modification" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Date_start">Дата начала выпуска</label>
+        <input asp-for="Date_start" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Date_end">Дата окончания выпуска</label>
+        <input asp-for="Date_end" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Mochnost">Мощность</label>
+        <input asp-for="Mochnost" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Emkost_ot">Емкость от</label>
+        <input asp-for="Emkost_ot" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Emkost_do">Емкость до</label>
+        <input asp-for="Emkost_do" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Polarnost">Полярность</label>
+        <input asp-for="Polarnost" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Dlina">Длина</label>
+        <input asp-for="Dlina" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Shirina">Ширина</label>
+        <input asp-for="Shirina" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Visota">Высота</label>
+        <input asp-for="Visota" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Diametr_klem">Диаметр клем</label>
+        <input asp-for="Diametr_klem" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Tok_xol_prok">Ток холодной прокрутки</label>
+        <input asp-for="Tok_xol_prok" class="form-control" />
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Сохранить</button>
+        <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
